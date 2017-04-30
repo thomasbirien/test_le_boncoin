@@ -1,24 +1,16 @@
-# README
+Hello, this is my rails app for your test.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+I use ruby 2.3.3, Rails 5.1.0.
 
-Things you may want to cover:
+this app are realised with four hours (and some minutes).
 
-* Ruby version
+Now i want:
+  -rework the db for more option with the search bar
+  -adding a mailer methods after create a item
+  -adding a admin interface
+  -adding pundit
+  -improve the front because is very basics
+  -trying to write some test
 
-* System dependencies
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+If you have some question about my works => thomasbirien@gmail.com
