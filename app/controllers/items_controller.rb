@@ -1,6 +1,12 @@
 class ItemsController < ApplicationController
   def index
-    @items = Item.all
+    if params[:category] == nil
+      @items = Item.all
+    else
+      items_filter = ItemFilter.new(params)
+      items_filter.filter
+      @items = items_filter.items
+    end
   end
 
   def show
