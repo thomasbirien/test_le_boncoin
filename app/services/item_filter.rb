@@ -15,6 +15,7 @@ class ItemFilter
     filter_by_max_price
     filter_by_category
     filter_by_item_name
+    filter_by_city
     @items = @items.distinct
     order_by_price
   end
@@ -42,5 +43,10 @@ class ItemFilter
   def filter_by_item_name
     @items = @items.where('item_name LIKE ?', "%#{params[:item_name]}%")
   end
+
+  def filter_by_city
+    @items = @items.joins(:user).where('city LIKE "Lyon"')
+  end
+
 end
 
