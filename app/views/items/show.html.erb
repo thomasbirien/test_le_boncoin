@@ -1,2 +1,15 @@
-<h1>Item#show</h1>
-<p>Find me in app/views/item/show.html.erb</p>
+<h1><%= @item.item_name %></h1>
+<% if item.picture == nil %>
+  <p>pas de photo pour cet article</p>
+<% else %>
+  <%= image_tag item.picture %>
+<% end %>
+<h3><%= @item.price %></h3>
+<p><%= @item.description %></p>
+
+<% if user_signed_in? %>
+  <h5><%= @item.user.phone_number %></h5>
+  <h5><%= @item.user.email %></h5>
+<% else %>
+  <button class="btn btn-primary"><%= link_to "voir les infos du vendeur", new_user_session_path %></button>
+<% end %>
