@@ -45,7 +45,7 @@ class ItemFilter
   end
 
   def filter_by_city
-    @items = @items.joins(:user).where('city LIKE "Lyon"')
+    @items = @items.joins(:user).where('city LIKE ?', "%#{params[:city]}%")
   end
 
 end

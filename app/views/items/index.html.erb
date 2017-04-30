@@ -1,0 +1,31 @@
+<%= render 'shared/search_bar' %>
+<%= link_to "tout les objets en vente", items_path, class: "btn btn-primary" %>
+<% if user_signed_in? %>
+  <div class="btn btn-primary">
+    <%= link_to "vos objets", profile_path %>
+  </div>
+<% else %>
+  <button class="btn btn-primary"><%= link_to "connexion", new_user_session_path %></button>
+<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <% @items.each do |item| %>
+        <div class="card">
+          <% if item.picture == nil %>
+            <p>pas de photo pour cet article</p>
+          <% else %>
+            <%= image_tag item.picture %>
+          <% end %>
+          <h4><%= item.item_name %></h4>
+          <h5><%= item.category %></h5>
+          <h3><%= item.price %></h3>
+          <p><%= item.description %></p>
+        </div>
+        <div class="btn btn-primary">
+          <%= link_to "en savoir plus", item_path(item) %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,2 +1,24 @@
-<h1>Profiles#show</h1>
-<p>Find me in app/views/profiles/show.html.erb</p>
+<button class="btn btn-primary"><%= link_to "mettre un objet en vente ?", new_item_path %></button>
+<%= link_to "accueil", items_path, class: "btn btn-primary" %>
+
+<h2>Vos objets en vente</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <% @items.each do |item| %>
+        <div class="card">
+        <% if item.picture == nil %>
+          <p>pas de photo pour cet article</p>
+        <% else %>
+          <%= image_tag item.picture %>
+        <% end %>
+          <h4><%= item.item_name %></h4>
+          <h3><%= item.price %>€</h3>
+          <p><%= item.description %></p>
+        </div>
+        <div><%= link_to "supprimer", item_path(item), method: :delete, data: { confirm: 'voulez-vous supprimer cet objet?'} %>
+        <div><%= link_to "modifier cet objet", edit_item_path(item) %></div>
+      <% end %>
+    </div>
+  </div>
+</div>

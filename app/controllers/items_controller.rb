@@ -1,6 +1,12 @@
-class ItemController < ApplicationController
+class ItemsController < ApplicationController
   def index
-    @items = Item.all
+    if params[:category] == nil
+      @items = Item.all
+    else
+      items_filter = ItemFilter.new(params)
+      items_filter.filter
+      @items = items_filter.items
+    end
   end
 
   def show
@@ -27,7 +33,7 @@ class ItemController < ApplicationController
   def update
     @item = Item.find(params[:id])
     if @item.update(item_params)
-      redirect_to profile_path*
+      redirect_to profile_path
     else
       render :edit
     end

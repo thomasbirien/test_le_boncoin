@@ -1,0 +1,29 @@
+<h2>recherche</h2>
+<div class="row">
+  <%= form_tag("/items", method: "get")  do%>
+
+    <div class="col-xs-12 col-md-2">
+      <%= text_field_tag(:item_name, nil, required: false, placeholder: "ex renault clio 3") %>
+    </div>
+
+    <div class="col-xs-12 col-md-1">
+      <%= select_tag :category, options_for_select(Item::CATEGORY) %>
+    </div>
+
+    <div class="col-xs-12 col-md-1">
+      <%= select_tag :city, options_for_select(User.array_city)%>
+    </div>
+
+    <div class="col-xs-12 col-md-2">
+      <%= text_field_tag(:min_price, nil, placeholder: "30") %>€
+    </div>
+
+        <div class="col-xs-12 col-md-2">
+      <%= text_field_tag(:max_price, nil, placeholder: "900") %>€
+    </div>
+
+    <div class="col-xs-12 col-md-2">
+      <%= submit_tag("chercher", class: "btn btn-primary") %>
+    </div>
+    <% end %>
+</div>

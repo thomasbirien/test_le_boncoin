@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  # has_many :items
+  has_many :items
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :phone_number, presence: true
@@ -14,5 +14,12 @@ class User < ApplicationRecord
   validates :city, presence: true
   validates :country, presence: true
   validates :status, presence: true
+
+  def self.array_city
+    users = User.all
+    users.map do |user|
+      user_city = user.city
+    end
+  end
 
 end
