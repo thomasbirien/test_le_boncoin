@@ -15,4 +15,11 @@ class User < ApplicationRecord
   validates :country, presence: true
   validates :status, presence: true
 
+  def self.array_city
+    users = User.all
+    users.map do |user|
+      user_city = user.city
+    end
+  end
+
 end
